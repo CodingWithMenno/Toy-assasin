@@ -68,12 +68,5 @@ func _physics_process(delta):
 		character.set_rotation(char_rot)
 	
 	# Animations
-	
-	var anim_to_play = "Idle"
-	
-	if (is_moving) :
-		anim_to_play = "Walking"
-	
-	var current_anim = anim_player.get_current_animation()
-	if (current_anim != anim_to_play):
-		anim_player.play(anim_to_play)
+	var speed = hv.length() / SPEED
+	get_node("AnimationTreePlayer").blend2_node_set_amount("Idle_Walk", speed)

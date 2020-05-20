@@ -1,7 +1,7 @@
 extends Camera
 
 export var distance = 3.0
-export var height = 1.2
+export var height = 1.0
 
 
 # Gets called once
