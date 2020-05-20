@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Blender/VillagerFox/VillagerFox_animations.glb" type="PackedScene" id=1]
 [ext_resource path="res://Blender/VillagerFox/Skin.material" type="Material" id=2]
@@ -11,6 +11,27 @@
 [ext_resource path="res://Blender/VillagerFox/FoxWalking-loop.anim" type="Animation" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
+radius = 1.23271
+height = 10.5279
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "FoxWalking-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "FoxIdle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=3]
+
+[sub_resource type="AnimationNodeBlendTree" id=5]
+graph_offset = Vector2( -266.706, 142 )
+nodes/Animation/node = SubResource( 7 )
+nodes/Animation/position = Vector2( -40, 200 )
+"nodes/Animation 2/node" = SubResource( 6 )
+"nodes/Animation 2/position" = Vector2( -40, 320 )
+nodes/Idle_Walk/node = SubResource( 3 )
+nodes/Idle_Walk/position = Vector2( 200, 200 )
+nodes/output/position = Vector2( 420, 180 )
+node_connections = [ "output", 0, "Idle_Walk", "Idle_Walk", 0, "Animation", "Idle_Walk", 1, "Animation 2" ]
 
 [node name="VillagerFox" instance=ExtResource( 1 )]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
@@ -26,10 +47,12 @@ material/3 = ExtResource( 4 )
 material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="3"]
-autoplay = "Idle"
+autoplay = "FoxIdle-loop"
+anims/FoxIdle-loop = ExtResource( 8 )
+anims/FoxWalking-loop = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="4"]
-transform = Transform( 1, 0, 0, 0, 6.19315, 0, 0, 0, 1, 0, 6.21272, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0.0239182, 6.28226, 0.148749 )
 shape = SubResource( 1 )
 
 [node name="Target" type="Spatial" parent="." index="5"]
@@ -39,34 +62,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.101, 0.397184 )
 transform = Transform( -3.33211, 0, -0.090222, 0, 3.33333, 0, 0.090222, 0, -3.33211, 1.45017, 0, -7.97629 )
 script = ExtResource( 7 )
 
-[node name="AnimationTreePlayer" type="AnimationTreePlayer" parent="." index="6"]
-master_player = NodePath("../AnimationPlayer")
+[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
 active = true
-data = {
-"active": true,
-"connections": [ "Idle_Walk", "out", 0, "Idle", "Idle_Walk", 0, "Walking", "Idle_Walk", 1 ],
-"master": NodePath("../AnimationPlayer"),
-"nodes": [ {
-"id": "out",
-"position": Vector2( 529, 55 ),
-"type": "output"
-}, {
-"animation": ExtResource( 8 ),
-"filter": [  ],
-"id": "Idle",
-"position": Vector2( 50, 50 ),
-"type": "animation"
-}, {
-"animation": ExtResource( 9 ),
-"filter": [  ],
-"id": "Walking",
-"position": Vector2( 79, 170 ),
-"type": "animation"
-}, {
-"blend": 1.0,
-"filter": [  ],
-"id": "Idle_Walk",
-"position": Vector2( 292, 70 ),
-"type": "blend2"
-} ]
-}
+parameters/Idle_Walk/blend_amount = 0.0

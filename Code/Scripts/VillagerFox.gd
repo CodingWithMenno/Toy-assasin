@@ -15,6 +15,7 @@ const DE_ACCELERATION = 10
 func _ready():
 	anim_player = get_node("AnimationPlayer")
 	character = get_node(".")
+	
 
 
 # Called every frame
@@ -42,7 +43,7 @@ func _physics_process(delta):
 	dir.y = 0
 	dir = dir.normalized()
 	
-	velocity.y + delta * gravity
+	velocity.y += delta * gravity
 	
 	var hv = velocity
 	hv.y = 0
@@ -69,4 +70,4 @@ func _physics_process(delta):
 	
 	# Animations
 	var speed = hv.length() / SPEED
-	get_node("AnimationTreePlayer").blend2_node_set_amount("Idle_Walk", speed)
+	get_node("AnimationTree").set("parameters/Idle_Walk/blend_amount", speed)

@@ -26,7 +26,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="VillagerFox_animations" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.288037, 0, 0.0838732, 0, 0.3, 0, -0.0838732, 0, -0.288037, -1.06161, 0.773434, 4.53135 )
+transform = Transform( -0.288037, 0, 0.0838732, 0, 0.3, 0, -0.0838732, 0, -0.288037, -1.06161, 4.80038, 4.53135 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
