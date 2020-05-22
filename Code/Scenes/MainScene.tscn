@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/VillagerFox.tscn" type="PackedScene" id=1]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -31,3 +33,6 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 shape = SubResource( 4 )
+
+[node name="VillagerFox" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 3.44742, -9.10821 )

@@ -107,7 +107,7 @@ states/Walking-loop/position = Vector2( 182, 24 )
 transitions = [ "Walking-loop", "Death", SubResource( 9 ), "Idle-loop", "Death", SubResource( 10 ), "Running-loop", "Death", SubResource( 11 ), "Idle-loop", "Walking-loop", SubResource( 12 ), "Walking-loop", "Idle-loop", SubResource( 13 ), "Idle-loop", "Running-loop", SubResource( 14 ), "Running-loop", "Idle-loop", SubResource( 15 ), "Walking-loop", "Running-loop", SubResource( 16 ), "Running-loop", "Walking-loop", SubResource( 17 ), "Walking-loop", "Falling-loop", SubResource( 27 ), "Running-loop", "Falling-loop", SubResource( 28 ), "Idle-loop", "Falling-loop", SubResource( 29 ), "Walking-loop", "Jump", SubResource( 30 ), "Running-loop", "Jump", SubResource( 31 ), "Idle-loop", "Jump", SubResource( 32 ), "Jump", "Falling-loop", SubResource( 33 ), "Falling-loop", "Landing", SubResource( 34 ), "Landing", "Idle-loop", SubResource( 35 ) ]
 start_node = "Idle-loop"
 end_node = "Death"
-graph_offset = Vector2( 26, -260 )
+graph_offset = Vector2( 67, -156 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -132,3 +132,9 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 process_mode = 0
 parameters/playback = SubResource( 23 )
+
+[node name="CameraTarget" type="Spatial" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28572, 12.2688, -11.5963 )
+
+[node name="ClippedCamera" type="ClippedCamera" parent="CameraTarget" index="0"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0.858295, -0.397845, 0.0156651 )
