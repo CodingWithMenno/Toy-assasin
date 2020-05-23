@@ -4,14 +4,16 @@ var mouseSensitivity = 0.1
 var cameraTarget
 var cameraTransform
 var orientation
-const CAMERA_SPEED = 0.01
+const CAMERA_SPEED = 0.02
 
 var stateMachine
 
 var velocity = Vector3()
 var speed
+var stamina = MAX_STAMINA
+const MAX_STAMINA = 200
 const GRAVITY = -9.8
-const WALK_SPEED = 4
+const WALK_SPEED = 3
 const RUN_SPEED = 7
 const ACCELERATION = 6
 const DE_ACCELERATION = 8
@@ -71,10 +73,19 @@ func _physics_process(delta):
 	var hv = velocity
 	hv.y = 0
 	
-	if Input.is_action_pressed("shift"):
-		speed = RUN_SPEED
+	print(stamina)
+	
+	if Input.is_action_pressed("shift") and stamina > 0:
+		if stamina == 1:
+			stamina = -MAX_STAMINA
+		else:
+			speed = RUN_SPEED
+		stamina -= 1
 	else:
+		if stamina < MAX_STAMINA:
+			stamina += 1
 		speed = WALK_SPEED
+		
 	
 	var newPosition = direction * speed
 	var accel = DE_ACCELERATION

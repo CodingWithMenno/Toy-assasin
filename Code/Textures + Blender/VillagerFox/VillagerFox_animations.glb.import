@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/VillagerFox_animations.glb-fea96497ad5f1118516b57633ae62fb9.scn"
+path="res://.import/VillagerFox_animations.glb-436434572c08b9cb7a23b13891b8f82d.scn"
 
 [deps]
 
-source_file="res://Blender/VillagerFox/VillagerFox_animations.glb"
-dest_files=[ "res://.import/VillagerFox_animations.glb-fea96497ad5f1118516b57633ae62fb9.scn" ]
+source_file="res://Textures + Blender/VillagerFox/VillagerFox_animations.glb"
+dest_files=[ "res://.import/VillagerFox_animations.glb-436434572c08b9cb7a23b13891b8f82d.scn" ]
 
 [params]
 
