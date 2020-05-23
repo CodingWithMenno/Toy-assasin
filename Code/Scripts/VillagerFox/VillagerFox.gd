@@ -18,6 +18,7 @@ const RUN_SPEED = 7
 const ACCELERATION = 6
 const DE_ACCELERATION = 8
 const JUMP_FORCE = 750
+const ROTATION_SPEED = 0.2
 
 
 # Gets called once
@@ -73,8 +74,6 @@ func _physics_process(delta):
 	var hv = velocity
 	hv.y = 0
 	
-	print(stamina)
-	
 	if Input.is_action_pressed("shift") and stamina > 0:
 		if stamina == 1:
 			stamina = -MAX_STAMINA
@@ -105,7 +104,11 @@ func _physics_process(delta):
 		
 		var angle = atan2(hv.x, hv.z)
 		var characterRotation = $metarig/Skeleton/Cube.get_rotation()
-		characterRotation.y = angle
+		var slowAngle = characterRotation.y + (angle - characterRotation.y) * ROTATION_SPEED
+		if abs(slowAngle) > 1.5:
+			characterRotation.y = angle
+		else:
+			characterRotation.y = slowAngle
 		$metarig/Skeleton/Cube.set_rotation(characterRotation)
 		$metarig/Skeleton/Cube001.set_rotation(characterRotation)
 		
