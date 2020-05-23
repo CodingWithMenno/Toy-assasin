@@ -42,16 +42,16 @@ xfade_time = 0.2
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 xfade_time = 0.4
@@ -69,13 +69,13 @@ xfade_time = 0.2
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
-xfade_time = 0.1
+xfade_time = 0.05
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
-xfade_time = 0.1
+xfade_time = 0.05
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
-xfade_time = 0.1
+xfade_time = 0.05
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
@@ -107,7 +107,7 @@ states/Walking-loop/position = Vector2( 182, 24 )
 transitions = [ "Walking-loop", "Death", SubResource( 9 ), "Idle-loop", "Death", SubResource( 10 ), "Running-loop", "Death", SubResource( 11 ), "Idle-loop", "Walking-loop", SubResource( 12 ), "Walking-loop", "Idle-loop", SubResource( 13 ), "Idle-loop", "Running-loop", SubResource( 14 ), "Running-loop", "Idle-loop", SubResource( 15 ), "Walking-loop", "Running-loop", SubResource( 16 ), "Running-loop", "Walking-loop", SubResource( 17 ), "Walking-loop", "Falling-loop", SubResource( 18 ), "Running-loop", "Falling-loop", SubResource( 19 ), "Idle-loop", "Falling-loop", SubResource( 20 ), "Walking-loop", "Jump", SubResource( 21 ), "Running-loop", "Jump", SubResource( 22 ), "Idle-loop", "Jump", SubResource( 23 ), "Jump", "Falling-loop", SubResource( 24 ), "Falling-loop", "Landing", SubResource( 25 ), "Landing", "Idle-loop", SubResource( 26 ) ]
 start_node = "Idle-loop"
 end_node = "Death"
-graph_offset = Vector2( -11, -91 )
+graph_offset = Vector2( -20, -46 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=28]
 

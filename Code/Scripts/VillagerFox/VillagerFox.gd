@@ -13,8 +13,9 @@ var speed
 const GRAVITY = -9.8
 const WALK_SPEED = 4
 const RUN_SPEED = 7
-const ACCELERATION = 4
-const DE_ACCELERATION = 7
+const ACCELERATION = 6
+const DE_ACCELERATION = 8
+const JUMP_FORCE = 750
 
 
 # Gets called once
@@ -38,7 +39,17 @@ func _physics_process(delta):
 	
 	var direction = Vector3()
 	var hasMoved = false
+	var hasJumped = false
 	
+	if not is_on_floor():
+		fall()
+	else:
+		idle()
+	
+	if Input.is_action_pressed("spacebar") and is_on_floor():
+		velocity.y += delta * JUMP_FORCE
+		hasJumped = true
+		jump()
 	if Input.is_action_pressed("w"):
 		direction += orientationTransform.basis[2]
 		hasMoved = true
@@ -86,9 +97,14 @@ func _physics_process(delta):
 		characterRotation.y = angle
 		$metarig/Skeleton/Cube.set_rotation(characterRotation)
 		$metarig/Skeleton/Cube001.set_rotation(characterRotation)
+		
+		if speed == WALK_SPEED and not hasJumped and is_on_floor():
+			walk()
+		elif speed == RUN_SPEED and not hasJumped and is_on_floor():
+			run()
 
 func jump():
-	stateMachine.travel("Jump")
+	stateMachine.start("Jump")
 
 func fall():
 	stateMachine.travel("Falling-loop")
