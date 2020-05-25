@@ -143,16 +143,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.193, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163004, -1.09687, 0.481617 )
 
 [node name="Camera" type="Camera" parent="Orientation/CameraTarget" index="0"]
-transform = Transform( -1, 0, -3.25841e-07, -6.40593e-08, 0.980484, 0.196596, 3.19482e-07, 0.196596, -0.980484, -1.2927, 1.66652, -10.7918 )
+transform = Transform( -1, -2.34479e-13, -3.25841e-07, -6.40593e-08, 0.980485, 0.196596, 3.19482e-07, 0.196596, -0.980485, -2.36816, 2.80157, -12.9245 )
 current = true
 
 [node name="UI" type="Node2D" parent="." index="7"]
 
 [node name="Stamina" type="TextureProgress" parent="UI" index="0"]
 margin_left = 8.0
-margin_top = 464.0
+margin_top = 944.0
 margin_right = 520.0
-margin_bottom = 976.0
+margin_bottom = 1456.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )

@@ -4,7 +4,7 @@ var mouseSensitivity = 0.1
 var cameraTarget
 var cameraTransform
 var orientation
-const CAMERA_SPEED = 0.02
+const CAMERA_SPEED = 0.003
 
 var stateMachine
 
@@ -25,7 +25,9 @@ const ROTATION_SPEED = 0.2
 func _ready():
 	orientation = $Orientation
 	cameraTarget = $Orientation/CameraTarget
+	
 	stateMachine = $AnimationTree.get("parameters/playback")
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 # Gets called when there is a mouse or key inputs
@@ -74,15 +76,15 @@ func _physics_process(delta):
 	var hv = velocity
 	hv.y = 0
 	
-	if Input.is_action_pressed("shift") and stamina > 0:
-		if stamina == 1:
-			stamina = -MAX_STAMINA
+	if Input.is_action_pressed("shift") and stamina > 0 and hasMoved:
+		if stamina < 1:
+			stamina = -MAX_STAMINA / 5
 		else:
 			speed = RUN_SPEED
-		stamina -= 1
+		stamina -= 25 * delta
 	else:
 		if stamina < MAX_STAMINA:
-			stamina += 1
+			stamina += 25 * delta
 		speed = WALK_SPEED
 		
 	
