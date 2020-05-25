@@ -11,7 +11,7 @@ dest_files=[ "res://.import/VillagerFox_animations.glb-436434572c08b9cb7a23b1389
 
 [params]
 
-nodes/root_type="KinematicBody"
+nodes/root_type="Spatial"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""

@@ -8,10 +8,17 @@ const CAMERA_SPEED = 0.003
 
 var stateMachine
 
+var particlesRocket
+var fuel = MAX_FUEL
+const MAX_FUEL = 100
+const REGENERATION_FUEL = 25
+const JETPACK_FORCE = 500
+
 var velocity = Vector3()
 var speed
 var stamina = MAX_STAMINA
 const MAX_STAMINA = 200
+const REGENERATION_STAMINA = 25
 const GRAVITY = -9.8
 const WALK_SPEED = 3
 const RUN_SPEED = 7
@@ -23,6 +30,8 @@ const ROTATION_SPEED = 0.2
 
 # Gets called once
 func _ready():
+	particlesRocket = $Particles/RocketFire
+	
 	orientation = $Orientation
 	cameraTarget = $Orientation/CameraTarget
 	
@@ -45,11 +54,25 @@ func _physics_process(delta):
 	var direction = Vector3()
 	var hasMoved = false
 	var hasJumped = false
+	var isJetpacking = false
 	
 	if not is_on_floor():
 		fall()
 	else:
 		idle()
+	
+	if Input.is_action_pressed("e") and fuel > 0:
+		if fuel < 1:
+			fuel = -MAX_FUEL / 5
+		else:
+			velocity.y = delta * JETPACK_FORCE
+			isJetpacking = true
+			fuel -= REGENERATION_FUEL * delta
+		particlesRocket.emitting = true
+	else:
+		if fuel < MAX_FUEL:
+			fuel += (REGENERATION_FUEL / 8) * delta
+		particlesRocket.emitting = false
 	
 	if Input.is_action_pressed("spacebar") and is_on_floor():
 		velocity.y += delta * JUMP_FORCE
@@ -81,10 +104,10 @@ func _physics_process(delta):
 			stamina = -MAX_STAMINA / 5
 		else:
 			speed = RUN_SPEED
-		stamina -= 25 * delta
+		stamina -= REGENERATION_STAMINA * delta
 	else:
 		if stamina < MAX_STAMINA:
-			stamina += 25 * delta
+			stamina += REGENERATION_STAMINA * delta
 		speed = WALK_SPEED
 		
 	
@@ -114,10 +137,16 @@ func _physics_process(delta):
 		$metarig/Skeleton/Cube.set_rotation(characterRotation)
 		$metarig/Skeleton/Cube001.set_rotation(characterRotation)
 		
-		if speed == WALK_SPEED and not hasJumped and is_on_floor():
+		if speed == WALK_SPEED and not hasJumped and is_on_floor() and not isJetpacking:
 			walk()
-		elif speed == RUN_SPEED and not hasJumped and is_on_floor():
+		elif speed == RUN_SPEED and not hasJumped and is_on_floor()  and not isJetpacking:
 			run()
+	
+	if isJetpacking:
+		jetPack()
+
+func jetPack():
+	stateMachine.travel("Flying-loop")
 
 func jump():
 	stateMachine.start("Jump")
