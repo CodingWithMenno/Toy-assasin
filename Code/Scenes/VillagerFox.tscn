@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Textures + Blender/VillagerFox/Metal.material" type="Material" id=1]
 [ext_resource path="res://Textures + Blender/VillagerFox/Skin.material" type="Material" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://Textures + Blender/VillagerFox/Face.material" type="Material" id=4]
 [ext_resource path="res://Textures + Blender/VillagerFox/Leather.material" type="Material" id=5]
 [ext_resource path="res://Scripts/VillagerFox/VillagerFox.gd" type="Script" id=6]
-[ext_resource path="res://Textures + Blender/InGameUI/staminaFull.png" type="Texture" id=7]
 [ext_resource path="res://Textures + Blender/InGameUI/staminaBackground.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/VillagerFox/StaminaVillagerFox.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/FuelVillager.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/VillagerFox/FuelVillager.gd" type="Script" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Cube"
@@ -1993,7 +1992,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.193, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163004, -1.09687, 0.481617 )
 
 [node name="Camera" type="Camera" parent="Orientation/CameraTarget"]
-transform = Transform( -1, -2.34479e-13, -3.25841e-07, -6.40593e-08, 0.980485, 0.196596, 3.19482e-07, 0.196596, -0.980485, -2.36816, 2.80157, -12.9245 )
+transform = Transform( -1, -3.05533e-13, -3.25841e-07, -6.40593e-08, 0.980485, 0.196596, 3.19482e-07, 0.196596, -0.980485, -2.36816, 2.80157, -12.9245 )
 current = true
 
 [node name="UI" type="Node2D" parent="."]
@@ -2005,8 +2004,9 @@ margin_right = 520.0
 margin_bottom = 1456.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture_under = ExtResource( 8 )
-texture_progress = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
 fill_mode = 4
+tint_progress = Color( 0.262745, 0.784314, 0.870588, 1 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2031,6 +2031,7 @@ __meta__ = {
 
 [node name="RocketFire" type="Particles" parent="Particles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.603451, -0.0769677 )
+emitting = false
 amount = 100
 local_coords = false
 process_material = SubResource( 48 )

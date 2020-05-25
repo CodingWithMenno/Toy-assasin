@@ -4,6 +4,7 @@ var mouseSensitivity = 0.1
 var cameraTarget
 var cameraTransform
 var orientation
+var camera
 const CAMERA_SPEED = 0.003
 
 var stateMachine
@@ -32,6 +33,7 @@ const ROTATION_SPEED = 0.2
 func _ready():
 	particlesRocket = $Particles/RocketFire
 	
+	camera = $Orientation/CameraTarget/Camera
 	orientation = $Orientation
 	cameraTarget = $Orientation/CameraTarget
 	
@@ -45,6 +47,14 @@ func _input(event):
 		orientation.rotate_y(deg2rad(-event.relative.x * mouseSensitivity))
 		cameraTarget.rotate_x(deg2rad(event.relative.y * mouseSensitivity))
 		cameraTarget.rotation.x = clamp(cameraTarget.rotation.x, deg2rad(-80), deg2rad(80))
+	
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_WHEEL_UP:
+			if camera.translation.z < -9:
+				camera.translation.z += 1
+		if event.button_index == BUTTON_WHEEL_DOWN:
+			if camera.translation.z > -30:
+				camera.translation.z -= 1
 
 
 # Gets called every frame
@@ -63,7 +73,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("e") and fuel > 0:
 		if fuel < 1:
-			fuel = -MAX_FUEL / 5
+			fuel = -MAX_FUEL / 10
 		else:
 			velocity.y = delta * JETPACK_FORCE
 			isJetpacking = true
@@ -99,7 +109,7 @@ func _physics_process(delta):
 	var hv = velocity
 	hv.y = 0
 	
-	if Input.is_action_pressed("shift") and stamina > 0 and hasMoved:
+	if Input.is_action_pressed("shift") and stamina > 0 and hasMoved and not isJetpacking:
 		if stamina < 1:
 			stamina = -MAX_STAMINA / 5
 		else:
@@ -109,7 +119,9 @@ func _physics_process(delta):
 		if stamina < MAX_STAMINA:
 			stamina += REGENERATION_STAMINA * delta
 		speed = WALK_SPEED
-		
+	
+	if isJetpacking:
+		speed = RUN_SPEED * 2
 	
 	var newPosition = direction * speed
 	var accel = DE_ACCELERATION
