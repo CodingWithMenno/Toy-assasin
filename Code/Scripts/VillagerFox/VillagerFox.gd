@@ -10,6 +10,8 @@ const CAMERA_SPEED = 0.003
 var stateMachine
 
 var isInDrone = false
+var drone
+var droneMade = false
 
 var particlesRocket
 var fuel = MAX_FUEL
@@ -80,11 +82,17 @@ func _physics_process(delta):
 		isInDrone = not isInDrone
 	
 	if isInDrone:
-		# Go to the drone
-		pass
+		if not droneMade:
+			drone = preload("res://Scenes/Drone.tscn")
+			drone = drone.instance()
+			get_node("..").add_child(drone)
+			droneMade = true
 	else:
-		camera.current = true
-		isInDrone = false
+		if droneMade:
+			get_node("..").remove_child(drone)
+			droneMade = false
+			drone = null
+			camera.current = true
 		
 		if Input.is_action_pressed("e") and fuel > 0:
 			if fuel < 1:
