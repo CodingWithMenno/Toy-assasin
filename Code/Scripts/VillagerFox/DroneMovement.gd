@@ -9,6 +9,8 @@ const ROTATION_SPEED = 0.05
 
 func _ready():
 	player = get_node("../VillagerFox")
+	get_node("../VillagerFox/UI/Stamina").visible = false
+	get_node("../VillagerFox/UI/Fuel").visible = false
 	translation = Vector3(player.translation.x, player.translation.y + 5, player.translation.z)
 	$Orientation/Camera.current = true
 

@@ -93,6 +93,8 @@ func _physics_process(delta):
 			droneMade = false
 			drone = null
 			camera.current = true
+			$UI/Stamina.visible = true
+			$UI/Fuel.visible = true
 		
 		if Input.is_action_pressed("e") and fuel > 0:
 			if fuel < 1:
