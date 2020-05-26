@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Wooden Floor.jpg-a4c93fdea5056f9b79c84109002e46ad.s3tc.stex"
-path.etc2="res://.import/Wooden Floor.jpg-a4c93fdea5056f9b79c84109002e46ad.etc2.stex"
+path.s3tc="res://.import/Wooden Floor.jpg-085285eac6b0dbf8b71a4b06e9765074.s3tc.stex"
+path.etc2="res://.import/Wooden Floor.jpg-085285eac6b0dbf8b71a4b06e9765074.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures + Blender/Room/Wooden Floor.jpg"
-dest_files=[ "res://.import/Wooden Floor.jpg-a4c93fdea5056f9b79c84109002e46ad.s3tc.stex", "res://.import/Wooden Floor.jpg-a4c93fdea5056f9b79c84109002e46ad.etc2.stex" ]
+source_file="res://Resources/Room/Wooden Floor.jpg"
+dest_files=[ "res://.import/Wooden Floor.jpg-085285eac6b0dbf8b71a4b06e9765074.s3tc.stex", "res://.import/Wooden Floor.jpg-085285eac6b0dbf8b71a4b06e9765074.etc2.stex" ]
 
 [params]
 

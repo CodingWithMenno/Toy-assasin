@@ -9,6 +9,8 @@ const CAMERA_SPEED = 0.003
 
 var stateMachine
 
+var isInDrone = false
+
 var particlesRocket
 var fuel = MAX_FUEL
 const MAX_FUEL = 100
@@ -43,6 +45,9 @@ func _ready():
 
 # Gets called when there is a mouse or key inputs
 func _input(event):
+	if isInDrone:
+		return
+	
 	if event is InputEventMouseMotion:
 		orientation.rotate_y(deg2rad(-event.relative.x * mouseSensitivity))
 		cameraTarget.rotate_x(deg2rad(event.relative.y * mouseSensitivity))
@@ -71,35 +76,45 @@ func _physics_process(delta):
 	else:
 		idle()
 	
-	if Input.is_action_pressed("e") and fuel > 0:
-		if fuel < 1:
-			fuel = -MAX_FUEL / 10
-		else:
-			velocity.y = delta * JETPACK_FORCE
-			isJetpacking = true
-			fuel -= REGENERATION_FUEL * delta
-		particlesRocket.emitting = true
-	else:
-		if fuel < MAX_FUEL:
-			fuel += (REGENERATION_FUEL / 8) * delta
-		particlesRocket.emitting = false
+	if Input.is_action_just_pressed("f"):
+		isInDrone = not isInDrone
 	
-	if Input.is_action_pressed("spacebar") and is_on_floor():
-		velocity.y += delta * JUMP_FORCE
-		hasJumped = true
-		jump()
-	if Input.is_action_pressed("w"):
-		direction += orientationTransform.basis[2]
-		hasMoved = true
-	if Input.is_action_pressed("s"):
-		direction += -orientationTransform.basis[2]
-		hasMoved = true
-	if Input.is_action_pressed("a"):
-		direction += orientationTransform.basis[0]
-		hasMoved = true
-	if Input.is_action_pressed("d"):
-		direction += -orientationTransform.basis[0]
-		hasMoved = true
+	if isInDrone:
+		# Go to the drone
+		pass
+	else:
+		camera.current = true
+		isInDrone = false
+		
+		if Input.is_action_pressed("e") and fuel > 0:
+			if fuel < 1:
+				fuel = -MAX_FUEL / 10
+			else:
+				velocity.y = delta * JETPACK_FORCE
+				isJetpacking = true
+				fuel -= REGENERATION_FUEL * delta
+			particlesRocket.emitting = true
+		else:
+			if fuel < MAX_FUEL:
+				fuel += (REGENERATION_FUEL / 8) * delta
+			particlesRocket.emitting = false
+		
+		if Input.is_action_pressed("spacebar") and is_on_floor():
+			velocity.y += delta * JUMP_FORCE
+			hasJumped = true
+			jump()
+		if Input.is_action_pressed("w"):
+			direction += orientationTransform.basis[2]
+			hasMoved = true
+		if Input.is_action_pressed("s"):
+			direction += -orientationTransform.basis[2]
+			hasMoved = true
+		if Input.is_action_pressed("a"):
+			direction += orientationTransform.basis[0]
+			hasMoved = true
+		if Input.is_action_pressed("d"):
+			direction += -orientationTransform.basis[0]
+			hasMoved = true
 	
 	direction.y= 0
 	direction = direction.normalized()

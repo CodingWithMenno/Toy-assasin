@@ -2,16 +2,16 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/VillagerFox_animations.glb-436434572c08b9cb7a23b13891b8f82d.scn"
+path="res://.import/Drone.glb-070516ab9e9ad3a841138bead48c858a.scn"
 
 [deps]
 
-source_file="res://Textures + Blender/VillagerFox/VillagerFox_animations.glb"
-dest_files=[ "res://.import/VillagerFox_animations.glb-436434572c08b9cb7a23b13891b8f82d.scn" ]
+source_file="res://Resources/VillagerFox/Drone.glb"
+dest_files=[ "res://.import/Drone.glb-070516ab9e9ad3a841138bead48c858a.scn" ]
 
 [params]
 
-nodes/root_type="Spatial"
+nodes/root_type="KinematicBody"
 nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
