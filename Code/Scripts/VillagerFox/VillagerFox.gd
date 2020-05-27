@@ -181,6 +181,12 @@ func _physics_process(delta):
 	
 	if isJetpacking:
 		jetPack()
+	
+	if isInDrone and is_on_floor():
+		drone()
+
+func drone():
+	stateMachine.travel("Death")
 
 func jetPack():
 	stateMachine.travel("Flying-loop")

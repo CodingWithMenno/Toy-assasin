@@ -44,7 +44,7 @@ func _physics_process(delta):
 	if not hasMovedX:
 		$Cube.rotation.x = lerp($Cube.rotation.x, 0, ROTATION_SPEED)
 	if not hasMovedZ:
-		$Cube.rotation.z = lerp($Cube.rotation.z, -0.2, ROTATION_SPEED)
+		$Cube.rotation.z = lerp($Cube.rotation.z, -0.1, ROTATION_SPEED)
 	
 	direction = direction.normalized()
 	

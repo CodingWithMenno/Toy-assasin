@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Resources/VillagerFox/Skin.material" type="Material" id=2]
 [ext_resource path="res://Resources/VillagerFox/Black.material" type="Material" id=3]
@@ -1686,7 +1686,10 @@ xfade_time = 0.2
 [sub_resource type="AnimationNodeStateMachineTransition" id=43]
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachine" id=44]
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id=45]
 states/Death/node = SubResource( 13 )
 states/Death/position = Vector2( 678, -214 )
 states/Falling-loop/node = SubResource( 14 )
@@ -1703,36 +1706,57 @@ states/Running-loop/node = SubResource( 19 )
 states/Running-loop/position = Vector2( 1178, 24 )
 states/Walking-loop/node = SubResource( 20 )
 states/Walking-loop/position = Vector2( 182, 24 )
-transitions = [ "Walking-loop", "Death", SubResource( 21 ), "Idle-loop", "Death", SubResource( 22 ), "Running-loop", "Death", SubResource( 23 ), "Idle-loop", "Walking-loop", SubResource( 24 ), "Walking-loop", "Idle-loop", SubResource( 25 ), "Idle-loop", "Running-loop", SubResource( 26 ), "Running-loop", "Idle-loop", SubResource( 27 ), "Walking-loop", "Running-loop", SubResource( 28 ), "Running-loop", "Walking-loop", SubResource( 29 ), "Walking-loop", "Falling-loop", SubResource( 30 ), "Running-loop", "Falling-loop", SubResource( 31 ), "Idle-loop", "Falling-loop", SubResource( 32 ), "Walking-loop", "Jump", SubResource( 33 ), "Running-loop", "Jump", SubResource( 34 ), "Idle-loop", "Jump", SubResource( 35 ), "Jump", "Falling-loop", SubResource( 36 ), "Falling-loop", "Landing", SubResource( 37 ), "Landing", "Idle-loop", SubResource( 38 ), "Idle-loop", "Flying-loop", SubResource( 39 ), "Walking-loop", "Flying-loop", SubResource( 40 ), "Running-loop", "Flying-loop", SubResource( 41 ), "Falling-loop", "Flying-loop", SubResource( 42 ), "Flying-loop", "Falling-loop", SubResource( 43 ) ]
+transitions = [ "Walking-loop", "Death", SubResource( 21 ), "Idle-loop", "Death", SubResource( 22 ), "Running-loop", "Death", SubResource( 23 ), "Idle-loop", "Walking-loop", SubResource( 24 ), "Walking-loop", "Idle-loop", SubResource( 25 ), "Idle-loop", "Running-loop", SubResource( 26 ), "Running-loop", "Idle-loop", SubResource( 27 ), "Walking-loop", "Running-loop", SubResource( 28 ), "Running-loop", "Walking-loop", SubResource( 29 ), "Walking-loop", "Falling-loop", SubResource( 30 ), "Running-loop", "Falling-loop", SubResource( 31 ), "Idle-loop", "Falling-loop", SubResource( 32 ), "Walking-loop", "Jump", SubResource( 33 ), "Running-loop", "Jump", SubResource( 34 ), "Idle-loop", "Jump", SubResource( 35 ), "Jump", "Falling-loop", SubResource( 36 ), "Falling-loop", "Landing", SubResource( 37 ), "Landing", "Idle-loop", SubResource( 38 ), "Idle-loop", "Flying-loop", SubResource( 39 ), "Walking-loop", "Flying-loop", SubResource( 40 ), "Running-loop", "Flying-loop", SubResource( 41 ), "Falling-loop", "Flying-loop", SubResource( 42 ), "Flying-loop", "Falling-loop", SubResource( 43 ), "Death", "Idle-loop", SubResource( 44 ) ]
 start_node = "Idle-loop"
-end_node = "Death"
-graph_offset = Vector2( 64, 107 )
+graph_offset = Vector2( 135, -244 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=46]
 
-[sub_resource type="Gradient" id=46]
+[sub_resource type="Gradient" id=47]
 offsets = PoolRealArray( 0, 0.143564, 0.490099, 0.856436 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 0.535985, 0.0625, 1, 0.834961, 0.0652313, 0.0652313, 1, 0.0800781, 0.0800781, 0.0800781, 1 )
 
-[sub_resource type="GradientTexture" id=47]
-gradient = SubResource( 46 )
+[sub_resource type="GradientTexture" id=48]
+gradient = SubResource( 47 )
 
-[sub_resource type="ParticlesMaterial" id=48]
+[sub_resource type="ParticlesMaterial" id=49]
 emission_shape = 1
 emission_sphere_radius = 2.0
 spread = 0.0
 gravity = Vector3( 0, -40, 0 )
 radial_accel = -5.0
 tangential_accel = 5.0
-color_ramp = SubResource( 47 )
+color_ramp = SubResource( 48 )
 
-[sub_resource type="SpatialMaterial" id=49]
+[sub_resource type="SpatialMaterial" id=50]
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
+emission_enabled = true
+emission = Color( 0.960784, 0.501961, 0.501961, 1 )
+emission_energy = 0.2
+emission_operator = 0
+emission_on_uv2 = false
 
-[sub_resource type="CubeMesh" id=50]
-material = SubResource( 49 )
+[sub_resource type="CubeMesh" id=51]
+material = SubResource( 50 )
 size = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="Animation" id=52]
+resource_name = "RocketFire"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RocketFire:draw_pass_1:material:emission_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.8, 1, 1.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.2, 0.94, 0.2, 0.2, 0.94, 0.1, 0.0 ]
+}
 
 [node name="VillagerFox" type="KinematicBody"]
 script = ExtResource( 6 )
@@ -1975,10 +1999,10 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 6.31
 shape = SubResource( 12 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 44 )
+tree_root = SubResource( 45 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 45 )
+parameters/playback = SubResource( 46 )
 
 [node name="Orientation" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.193, 0 )
@@ -2026,8 +2050,11 @@ __meta__ = {
 
 [node name="RocketFire" type="Particles" parent="Particles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.603451, -0.0769677 )
-emitting = false
 amount = 100
 local_coords = false
-process_material = SubResource( 48 )
-draw_pass_1 = SubResource( 50 )
+process_material = SubResource( 49 )
+draw_pass_1 = SubResource( 51 )
+
+[node name="RocketAnimation" type="AnimationPlayer" parent="Particles"]
+autoplay = "RocketFire"
+anims/RocketFire = SubResource( 52 )
