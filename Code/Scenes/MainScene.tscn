@@ -8,38 +8,38 @@
 
 [sub_resource type="CubeMesh" id=2]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 15, 0.5, 15 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 2 )
 normal_enabled = true
 normal_scale = 1.0
 uv1_scale = Vector3( -27, -17, 1 )
 
-[sub_resource type="CubeMesh" id=7]
+[sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 15, 1, 1 )
 
-[sub_resource type="CubeMesh" id=9]
+[sub_resource type="CubeMesh" id=7]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_color = Color( 0, 1, 1, 1 )
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( -100, -10, 1 )
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 15, 1, 1 )
 
-[sub_resource type="CubeMesh" id=12]
+[sub_resource type="CubeMesh" id=10]
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_color = Color( 0.592157, 0.929412, 0.552941, 1 )
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( -100, -10, 1 )
 
-[sub_resource type="Environment" id=14]
+[sub_resource type="Environment" id=13]
 background_mode = 1
 background_color = Color( 0.847059, 0.847059, 0.847059, 1 )
 background_energy = 0.2
@@ -60,7 +60,7 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="VillagerFox" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 306, 9.6952, 174.892 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 16, 9.6952, 1.892 )
 
 [node name="Floor" type="Spatial" parent="."]
 
@@ -71,12 +71,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor/Floor2"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor/Floor2"]
 transform = Transform( 15, 0, 0, 0, 0.5, 0, 0, 0, 15, 0, 0, 0 )
-material_override = SubResource( 6 )
-mesh = SubResource( 7 )
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Walls" type="Spatial" parent="."]
@@ -88,12 +88,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall"]
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall"]
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 9 )
-material/0 = SubResource( 10 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="Wall2" type="StaticBody" parent="Walls"]
 transform = Transform( 27, 0, 0, 0, 140, 0, 0, 0, 1, 0, 140, -256 )
@@ -102,12 +102,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall2"]
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall2"]
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
 
 [node name="Wall3" type="StaticBody" parent="Walls"]
 transform = Transform( -2.76965e-06, 0, 1, 0, 140, 0, -17, 0, -1.62921e-07, -406, 140, 0 )
@@ -116,12 +116,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall3"]
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall3"]
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
 
 [node name="Wall4" type="StaticBody" parent="Walls"]
 transform = Transform( -2.76965e-06, 0, 1, 0, 140, 0, -17, 0, -1.62921e-07, 406, 140, 0 )
@@ -130,18 +130,18 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Walls/Wall4"]
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Walls/Wall4"]
 transform = Transform( 15, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 12 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 75, -1.37091e-06 )
-light_color = Color( 1, 0.960784, 0.713726, 1 )
-light_energy = 0.39
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 8, -1.49012e-06 )
+light_color = Color( 0.984314, 0.792157, 0.521569, 1 )
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 14 )
+environment = SubResource( 13 )
