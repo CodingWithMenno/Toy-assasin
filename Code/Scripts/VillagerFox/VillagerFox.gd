@@ -106,7 +106,7 @@ func _physics_process(delta):
 			particlesRocket.emitting = true
 		else:
 			if fuel < MAX_FUEL:
-				fuel += (REGENERATION_FUEL / 8) * delta
+				fuel += (REGENERATION_FUEL / 10) * delta
 			particlesRocket.emitting = false
 		
 		if Input.is_action_pressed("spacebar") and is_on_floor():
