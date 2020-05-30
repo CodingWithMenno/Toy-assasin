@@ -2013,7 +2013,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163004, -1.09687, 0.481617 
 [node name="Camera" type="Camera" parent="Orientation/CameraTarget"]
 transform = Transform( -1, -3.05533e-13, -3.25841e-07, -6.40593e-08, 0.980485, 0.196596, 3.19482e-07, 0.196596, -0.980485, -2.36816, 2.80157, -12.9245 )
 current = true
-far = 750.0
+far = 1000.0
 
 [node name="UI" type="Node2D" parent="."]
 
