@@ -60,7 +60,7 @@ func _input(event):
 			if camera.translation.z < -9:
 				camera.translation.z += 1
 		if event.button_index == BUTTON_WHEEL_DOWN:
-			if camera.translation.z > -30:
+			if camera.translation.z > -100:
 				camera.translation.z -= 1
 
 

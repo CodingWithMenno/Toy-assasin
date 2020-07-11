@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/AnyConv.com__Bed.obj-74edc29c20e6d987b977a3d09ad3b836.mesh"
+
+[deps]
+
+files=[ "res://.import/AnyConv.com__Bed.obj-74edc29c20e6d987b977a3d09ad3b836.mesh" ]
+
+source_file="res://Resources/Room/AnyConv.com__Bed.obj"
+dest_files=[ "res://.import/AnyConv.com__Bed.obj-74edc29c20e6d987b977a3d09ad3b836.mesh", "res://.import/AnyConv.com__Bed.obj-74edc29c20e6d987b977a3d09ad3b836.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
